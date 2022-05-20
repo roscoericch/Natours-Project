@@ -1,0 +1,94 @@
+.story-flex{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-start;
+    justify-content: space-between;
+    //height:45rem;
+}
+
+.story{
+    width:70%;
+    //height:40%;
+    margin:0 auto;
+    box-shadow: 0 3rem 6rem rgba($color-black,.1);
+    background-color: rgba($color-white,.6);
+    border-radius: 3px;
+    padding:3rem;
+    padding-left: 6rem;
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+    position:relative;
+
+    @include respond(tab-port) {
+        width:100%;
+        padding-left: 4rem;
+    }
+
+    @include respond(tab-port) {
+        transform: skewX(0);
+    }
+    &:not(:last-of-type){
+        margin-bottom: 10rem;
+    }
+    &__shape{
+        width:13rem;
+        height:13rem;
+        float:left;
+        border-radius: 50%;
+        transform: translateX(-2rem) skewX(12deg);
+        overflow: hidden;
+
+        @supports (clip-path:polygon(0 0)) or (-webkit-clip-path:polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%);
+            -webkit-shape-outside: circle(50% at 50% 50%);
+            shape-outside: circle(50% at 50% 50%);
+            border-radius:none;
+        }
+
+        @include respond(phone) {
+            transform: translateX(-2rem) skewX(0);
+        }
+        backface-visibility: hidden;
+
+        overflow:hidden;
+    }
+
+    &__img{
+        height:100%;
+        transition:all .5s;
+        transform: translateX(-4rem) scale(1.4);
+        backface-visibility: hidden;
+    }
+    &:hover &__img{
+        transform: translateX(-4rem) scale(1);
+        filter: blur(3px) brightness(80%);
+    }
+
+    &__text{
+        transform: skewX(12deg);
+        @include respond(phone) {
+            transform: skewX(0);
+        }
+    }
+
+    &__caption{
+        position:absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,20%);
+        text-align: center;
+        color:$color-white;
+        text-transform:uppercase;
+        font-size:1.7rem;
+        opacity: 0;
+
+        transition: all .5s;
+        backface-visibility: hidden;
+    }
+
+    &:hover &__caption{
+        transform: translate(-50%,-50%);
+        opacity:1;
+    }
+}

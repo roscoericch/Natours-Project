@@ -1,0 +1,50 @@
+.features-flex{
+    display: flex;
+    align-items: stretch;
+    justify-content:space-around;
+
+    @include respond(tab-port) {
+        //flex-direction: column;
+        display:block;
+    }
+    
+}
+.features{
+    text-align: center;
+    background-color: rgba($color-white,.8);
+    flex:0 0 20%;
+
+    @include respond(tab-port) {
+        width:70%;
+        margin:0 auto;
+        &:not(:last-child){
+            margin-bottom: 4rem;
+        }
+        padding:1rem;
+    }
+    //align-self: center;
+    font-size:1.5rem;
+    padding:1.2rem;
+    border-radius: 3px;
+    box-shadow:0 1.5rem 4rem rgba($color-black, .15);
+    transition:transform .2s;
+    //transform: skewY(7deg);
+    &:hover{
+        transform:translateY(-1.5rem) scale(1.03);
+    }
+    
+    &-icon{
+        width:10rem;
+        height:10rem;
+        margin-bottom: .5rem;
+        fill:url(#my-gradient) #000;
+
+        @include respond(tab-port) {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+    
+
